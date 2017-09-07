@@ -1,5 +1,5 @@
 async function main() {
-  const client = await Redis.connect(
+  const { client, close } = await Redis.connect(
     {
       host: '',
       user: '',
@@ -11,4 +11,8 @@ async function main() {
       password: '',
     }
   );
+
+  client.doSomething('', function() {
+    close();
+  });
 }
